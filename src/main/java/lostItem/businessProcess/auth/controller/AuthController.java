@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("lostItem/auth")
+@RequestMapping("auth")
 @RequiredArgsConstructor
 @Slf4j
 public class AuthController { // 인증 관련 컨트롤러
