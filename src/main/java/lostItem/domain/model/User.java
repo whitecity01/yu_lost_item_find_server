@@ -22,14 +22,18 @@ public class User {
     @Column(nullable = false, unique = true, length = 255)
     private String emailId;
 
+    @Column(nullable = false, unique = true, length = 255)
+    private String phoneNumber;
+
     @Column(nullable = false, length = 255)
     private String password;
 
 
-    public User(String name,String email, String password) {
+    public User(String name,String email, String phoneNumber, String password) {
         this.id = null; //jpa가 알아서 관리해주기 때문에 null
         this.name = name;
         this.emailId = email;
+        this.phoneNumber = phoneNumber;
         this.password = password;
     }
 
