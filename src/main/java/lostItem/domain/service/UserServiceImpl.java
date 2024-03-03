@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(SignupDto user) {
-        User userEntity = new User( user.getName(), user.getEmail(), user.getPassword());
+        User userEntity = new User( user.getName(), user.getEmail(), user.getPhoneNumber(), user.getPassword());
 
         try {
             userRepository.save(userEntity);
