@@ -22,8 +22,6 @@ import static java.util.regex.Pattern.matches;
 @Slf4j
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-    //private final PasswordEncoder passwordEncoder;
-
 
     @Override
     public void checkExits(SignupDto user) {
@@ -35,7 +33,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(SignupDto user) {
-        //String encodePassword = passwordEncoder.encode(user.getPassword());
         User userEntity = new User( user.getName(), user.getEmail(), user.getPassword());
 
         try {
