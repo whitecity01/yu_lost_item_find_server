@@ -1,7 +1,7 @@
-package lostItem.domain.user.service;
+package lostItem.domain.service;
 
-import lostItem.businessProcess.auth.dto.SigninDto;
-import lostItem.businessProcess.auth.dto.SignupDto;
+import lostItem.dto.SigninDto;
+import lostItem.dto.SignupDto;
 
 public interface UserService {
     public void checkExits(SignupDto user);

@@ -1,6 +1,6 @@
-package lostItem.domain.user.repository;
+package lostItem.domain.repository;
 
-import lostItem.domain.user.model.User;
+import lostItem.domain.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
