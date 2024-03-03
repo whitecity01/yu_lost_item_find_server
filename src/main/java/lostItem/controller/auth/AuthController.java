@@ -1,12 +1,12 @@
-package lostItem.businessProcess.auth.controller;
+package lostItem.controller.auth;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lostItem.Exception.collections.InputValid.BindingErrors;
-import lostItem.businessProcess.auth.dto.SigninDto;
-import lostItem.businessProcess.auth.dto.SignupDto;
-import lostItem.domain.user.service.UserService;
+import lostItem.dto.SigninDto;
+import lostItem.dto.SignupDto;
+import lostItem.domain.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;

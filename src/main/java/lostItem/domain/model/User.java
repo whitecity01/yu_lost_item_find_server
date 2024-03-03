@@ -1,4 +1,4 @@
-package lostItem.domain.user.model;
+package lostItem.domain.model;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

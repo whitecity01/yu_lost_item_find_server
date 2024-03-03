@@ -1,4 +1,4 @@
-package lostItem.businessProcess.auth.dto;
+package lostItem.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;

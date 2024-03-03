@@ -1,4 +1,4 @@
-package lostItem.domain.user.service;
+package lostItem.domain.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,10 +6,10 @@ import lostItem.Exception.collections.business.DuplicateUniqueKeyException;
 import lostItem.Exception.collections.business.PasswordNotMatchException;
 import lostItem.Exception.collections.business.UserAlreadyExistsException;
 import lostItem.Exception.collections.business.UsernameNotFoundException;
-import lostItem.businessProcess.auth.dto.SigninDto;
-import lostItem.businessProcess.auth.dto.SignupDto;
-import lostItem.domain.user.model.User;
-import lostItem.domain.user.repository.UserRepository;
+import lostItem.dto.SigninDto;
+import lostItem.dto.SignupDto;
+import lostItem.domain.model.User;
+import lostItem.domain.repository.UserRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
