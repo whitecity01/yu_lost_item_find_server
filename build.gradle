@@ -33,7 +33,10 @@ dependencies {
 	//implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	//implementation group: 'org.apache.httpcomponents.client5', name: 'httpclient5', version: '5.3.1' //sms smrp 사용 위함
 	//Image AWS S3
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+	implementation 'com.amazonaws:aws-java-sdk-s3:1.11.1000'
 	//implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+	implementation 'com.drewnoakes:metadata-extractor:2.16.0' // 미디어 파일로부터 metadata를 읽어들이는 라이브러리
 }
 
 tasks.named('test') {
