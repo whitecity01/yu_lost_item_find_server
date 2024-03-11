@@ -1,10 +1,5 @@
 package lostItem.controller.reportItem;
 
-import com.drew.imaging.ImageMetadataReader;
-import com.drew.lang.GeoLocation;
-import com.drew.metadata.Metadata;
-import com.drew.metadata.exif.ExifSubIFDDirectory;
-import com.drew.metadata.exif.GpsDirectory;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
-
 @RestController
 @RequestMapping("")
 @RequiredArgsConstructor
@@ -30,7 +23,6 @@ public class ReportItemController {
     private final ReportItemService reportItemservice;
     @PostMapping("/reportItem")
     public ResponseEntity<?> uploadImage(@RequestPart("reportItemDto") @Valid ReportItemDto reportItem, @RequestPart("image") MultipartFile imageDto) {
-
         reportItemservice.reportItem(reportItem);
         s3Service.uploadImageToS3(imageDto);
         return ResponseEntity.ok(HttpStatus.OK);
