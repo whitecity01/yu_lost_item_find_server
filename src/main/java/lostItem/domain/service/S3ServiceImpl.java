@@ -26,27 +26,27 @@ public class S3ServiceImpl implements S3Service{
     private final AmazonS3 amazonS3;
     @Value("${cloud.aws.s3.bucketName}")
     private String bucketName; //버킷 이름
-    private String changedImageName(String originName) { //이미지 이름 중복 방지를 위해 랜덤으로 생성
-        String random = UUID.randomUUID().toString();
-        return random+originName;
+
+    @Override
+    public void uploadImageToS3(MultipartFile image, String title) {
+        String originName = image.getOriginalFilename(); // 원본 이미지 이름
+        String ext = originName.substring(originName.lastIndexOf(".")); // 확장자
+        String fileName = title + ext; // 제목을 파일 이름으로 사용
+        ObjectMetadata metadata = new ObjectMetadata(); // 메타데이터 설정
+        metadata.setContentType("image/" + ext);
+
+        try {
+            amazonS3.putObject(new PutObjectRequest(
+                    bucketName, fileName, image.getInputStream(), metadata
+            ).withCannedAcl(CannedAccessControlList.PublicRead));
+            log.info("Image uploaded to S3 with file name: {}", fileName);
+        } catch (IOException e) {
+            throw new ImageUploadException("Failed to upload image to S3", e);
+        }
     }
 
     @Override
-    public void uploadImageToS3(MultipartFile image) { //이미지를 S3에 업로드하고 이미지의 url을 반환
-        String originName = image.getOriginalFilename(); //원본 이미지 이름
-        String ext = originName.substring(originName.lastIndexOf(".")); //확장자
-        String changedName = changedImageName(originName); //새로 생성된 이미지 이름
-        ObjectMetadata metadata = new ObjectMetadata(); //메타데이터
-        metadata.setContentType("image/"+ext);
-        try {
-            PutObjectResult putObjectResult = amazonS3.putObject(new PutObjectRequest(
-                    bucketName, changedName, image.getInputStream(), metadata
-            ).withCannedAcl(CannedAccessControlList.PublicRead));
-
-        } catch (IOException e) {
-            throw new ImageUploadException(); //커스텀 예외 던짐.
-        }
-
-
+    public String getImageUrl(String fileName) { // 새로운 메서드 구현
+        return amazonS3.getUrl(bucketName, fileName).toString();
     }
 }
